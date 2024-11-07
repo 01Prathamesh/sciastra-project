@@ -23,13 +23,23 @@ router.post('/', (req, res) => {
 
   // Validate input data (basic checks)
   if (!title || !description || !price) {
-    return res.status(400).json({ error: 'Missing required fields' });
+    return res.status(400).json({ error: 'Missing required fields: title, description, and price are required.' });
+  }
+
+  // Validate that 'price' is a valid number
+  if (isNaN(price) || price <= 0) {
+    return res.status(400).json({ error: 'Price must be a valid number greater than 0.' });
+  }
+
+  // Optional: Check if discount_price is a valid number
+  if (discount_price && (isNaN(discount_price) || discount_price < 0)) {
+    return res.status(400).json({ error: 'Discount price must be a valid number or omitted.' });
   }
 
   // Insert new course into the database
   db.query(
     'INSERT INTO courses (title, description, price, discount_price, created_at) VALUES (?, ?, ?, ?, ?)',
-    [title, description, price, discount_price, createdAt],
+    [title, description, price, discount_price || null, createdAt],
     (err, result) => {
       if (err) {
         console.error('Database error:', err);
