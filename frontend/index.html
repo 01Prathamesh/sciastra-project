@@ -7,22 +7,39 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Header and Navigation -->
   <header>
     <nav>
       <h1>SciAstra</h1>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Courses</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="#" id="home-btn">Home</a></li>
+        <li><a href="#" id="courses-btn">Courses</a></li>
+        <li><a href="#" id="blog-btn">Blog</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <section id="discounted-courses">
+    <!-- Home Section -->
+    <section id="home-content">
+      <h2>Welcome to SciAstra!</h2>
+      <p>Explore the best courses and latest blogs.</p>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses-content" class="content-section">
       <h2>Discounted Courses</h2>
       <div id="courses-list">
         <!-- Dynamic courses will be added here -->
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog-content" class="content-section">
+      <h2>Latest Blogs</h2>
+      <div id="blog-list">
+        <!-- Dynamic blog posts will be added here -->
       </div>
     </section>
   </main>
