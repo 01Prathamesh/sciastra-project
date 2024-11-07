@@ -42,7 +42,7 @@ This project is a backend service built with Node.js and Express that interacts 
 1. Clone the repository to your local machine.
 
     ```bash
-    git clone https://github.com/your-username/sciastra-project.git
+    git clone https://github.com/01Prathamesh/sciastra-project.git
     cd sciastra-project
     ```
 
