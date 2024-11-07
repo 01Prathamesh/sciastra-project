@@ -44,7 +44,7 @@
 //   console.log(`Server running on http://localhost:${port}`);
 // });
 
-
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const db = require('./config/db');
@@ -64,6 +64,9 @@ app.use(express.json());  // Parse incoming requests as JSON
 app.use('/api/courses', courseRoutes);      // Courses API
 app.use('/api/blogs', blogRoutes);          // Blogs API
 app.use('/api/transactions', transactionRoutes); // Transactions API
+
+// Serve static files from the 'frontend' directory
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Default route
 app.get('/', (req, res) => {
