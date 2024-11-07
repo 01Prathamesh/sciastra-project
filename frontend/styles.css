@@ -106,6 +106,26 @@ nav ul li a.active {
   background-color: #2d7031;
 }
 
+
+/* Price Styling: Cross-out Original Price and Highlight Discounted Price */
+#course-details .price {
+  font-size: 1.5rem;
+}
+
+#course-details .original-price {
+  text-decoration: line-through;
+  color: red;  /* Red strikethrough for the original price */
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+#course-details .discount-price {
+  font-size: 1.8rem;
+  color: #ff4d4d;  /* Red color */
+  font-weight: bold;
+}
+
+
 /* Blog Section */
 #blog-list {
   display: grid;

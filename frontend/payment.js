@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     const courseId = new URLSearchParams(window.location.search).get('course_id');  // Get course_id from URL
     if (courseId) {
-        fetchCourseDetails(courseId);  // Fetch course details if the course_id exists
+        fetchCourseDetails(courseId);
     } else {
-        alert("Course not found");  // Alert if no course_id found in the URL
+        alert("Course not found");
     }
 
     const paymentForm = document.getElementById("paymentForm");
@@ -34,18 +34,37 @@ function fetchCourseDetails(courseId) {
             // Update the page with course details
             const courseDetails = document.getElementById('course-details');
             if (course) {
-                courseDetails.innerHTML = `
-                    <h3>${course.title}</h3>
-                    <p>${course.description}</p>
-                    <p>Price: ₹.${course.discount_price || course.price}</p>  <!-- Use discount price if available -->
-                `;
+                let priceHTML = '';
+
+                // If discount price exists, show original price crossed out and discounted price as the main price
+                if (course.discount_price) {
+                    priceHTML = `
+                        <h3>${course.title}</h3>
+                        <p>${course.description}</p>
+                        <div class="price">
+                            <span class="original-price">₹.${course.price}</span>
+                            <span class="discount-price">₹.${course.discount_price}</span>  <!-- Discount Price -->
+                        </div>
+                    `;
+                } else {
+                    // If no discount price, just show the original price
+                    priceHTML = `
+                        <h3>${course.title}</h3>
+                        <p>${course.description}</p>
+                        <div class="price">
+                            <span class="discount-price">₹.${course.price}</span>
+                        </div>
+                    `;
+                }
+
+                // Render the course details
+                courseDetails.innerHTML = priceHTML;
             } else {
                 alert("Course details not found.");
             }
         })
         .catch(error => console.error('Error fetching course details:', error));
 }
-
 
 function initiateTwoStepVerification(cardNumber, expiryDate, cvv) {
     // Step 1: Simulate sending a verification code

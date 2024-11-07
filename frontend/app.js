@@ -51,11 +51,16 @@ function fetchCourses() {
       data.forEach(course => {
         const courseCard = document.createElement('div');
         courseCard.classList.add('course-card');
+
+         // Check if there is a discount price
+         const displayPrice = course.discount_price ? `₹.${course.discount_price}` : `₹${course.price}`;
+         const originalPrice = course.discount_price ? `<span class="original-price">₹${course.price}</span>` : '';
+ 
         courseCard.innerHTML = `
           <h3>${course.title}</h3>
           <p>${course.description}</p>
-          <p>Price: ₹.${course.discount_price}</p>
-          <button onclick="selectCourse(${course.id})">Buy Course</button>
+          <p>Price: ${originalPrice} ${displayPrice ? `<span class="discounted-price">(${displayPrice})</span>` : ''}</p>
+          <button onclick="selectCourse(${course.id}, ${course.discount_price || course.price})">Buy Course</button>
         `;
         coursesList.appendChild(courseCard);
       });
@@ -93,5 +98,5 @@ function fetchBlogs() {
 
 // Function to handle course selection and redirect to payment
 function selectCourse(courseId) {
-  window.location.href = `/payment.html?ourse_id=${courseId}`;  // Redirect to payment page
+  window.location.href = `/payment.html?course_id=${courseId}`;  // Redirect to payment page
 }
