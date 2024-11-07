@@ -44,7 +44,7 @@ function showSection(sectionId) {
 
 // Fetch courses from the backend and display them
 function fetchCourses() {
-  fetch('http://localhost:5000/api/courses')  // Backend API endpoint
+  fetch('http://localhost:5000/api/courses')  // Your backend API endpoint
     .then(response => response.json())
     .then(data => {
       const coursesList = document.getElementById('courses-list');
@@ -54,14 +54,20 @@ function fetchCourses() {
         courseCard.innerHTML = `
           <h3>${course.title}</h3>
           <p>${course.description}</p>
-          <p><strong>Price:</strong> $${course.discount_price}</p>
-          <button onclick="selectCourse(${course.id})">Select Course</button>
+          <p>Price: ₹.${course.discount_price}</p>
+          <button onclick="selectCourse(${course.id})">Buy Course</button>
         `;
         coursesList.appendChild(courseCard);
       });
     })
     .catch(error => console.error('Error fetching courses:', error));
 }
+
+function selectCourse(courseId) {
+  // Redirect to payment page with courseId as query parameter
+  window.location.href = `/payment.html?course_id=${courseId}`;
+}
+
 
 // Fetch blogs from the backend and display them
 function fetchBlogs() {
@@ -87,5 +93,5 @@ function fetchBlogs() {
 
 // Function to handle course selection and redirect to payment
 function selectCourse(courseId) {
-  window.location.href = `/payment?course_id=${courseId}`;  // Redirect to payment page
+  window.location.href = `/payment.html?ourse_id=${courseId}`;  // Redirect to payment page
 }

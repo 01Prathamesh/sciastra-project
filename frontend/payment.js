@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const courseId = new URLSearchParams(window.location.search).get('course_id');  // Get course_id from URL
+    if (courseId) {
+        fetchCourseDetails(courseId);  // Fetch course details if the course_id exists
+    } else {
+        alert("Course not found");  // Alert if no course_id found in the URL
+    }
+
     const paymentForm = document.getElementById("paymentForm");
 
     paymentForm.addEventListener("submit", function(event) {
@@ -18,6 +25,27 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+// Fetch course details from the backend API
+function fetchCourseDetails(courseId) {
+    fetch(`http://localhost:5000/api/courses/${courseId}`)
+        .then(response => response.json())
+        .then(course => {
+            // Update the page with course details
+            const courseDetails = document.getElementById('course-details');
+            if (course) {
+                courseDetails.innerHTML = `
+                    <h3>${course.title}</h3>
+                    <p>${course.description}</p>
+                    <p>Price: ₹.${course.discount_price || course.price}</p>  <!-- Use discount price if available -->
+                `;
+            } else {
+                alert("Course details not found.");
+            }
+        })
+        .catch(error => console.error('Error fetching course details:', error));
+}
+
 
 function initiateTwoStepVerification(cardNumber, expiryDate, cvv) {
     // Step 1: Simulate sending a verification code
