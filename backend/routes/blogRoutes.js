@@ -35,17 +35,30 @@ router.get('/:id', (req, res) => {
 // Create a new blog post
 router.post('/', (req, res) => {
   const { title, content, author } = req.body;
-  const createdAt = new Date();
+  const createdAt = new Date();  // Current timestamp for created_at
+  const publishTime = new Date();  // Current timestamp for publish_time
+
+  // Validate input data (check that all required fields are provided)
+  if (!title || !content || !author) {
+    return res.status(400).json({ error: 'Missing required fields: title, content, and author are required.' });
+  }
+
   console.log('POST request to /api/blogs', { title, content, author });
+
+  // Insert new blog post into the database
   db.query(
-    'INSERT INTO blogs (title, content, author, created_at) VALUES (?, ?, ?, ?)',
-    [title, content, author, createdAt],
+    'INSERT INTO blogs (title, content, author, publish_time, created_at) VALUES (?, ?, ?, ?, ?)',
+    [title, content, author, publishTime, createdAt],
     (err, result) => {
       if (err) {
         console.error('Database error:', err);
         res.status(500).json({ error: 'Database error' });
       } else {
-        res.status(201).json({ message: 'Blog created successfully', blogId: result.insertId });
+        // Send a success message with the blog ID
+        res.status(201).json({
+          message: 'Blog created successfully',
+          blogId: result.insertId, // Return the ID of the newly created blog
+        });
       }
     }
   );
