@@ -16,6 +16,23 @@ router.get('/', (req, res) => {
   });
 });
 
+// Route to get a single course by ID
+router.get('/:id', (req, res) => {
+  const { id } = req.params;  // Get the course ID from the URL params
+
+  // Query the database to fetch the course with the given ID
+  db.query('SELECT * FROM courses WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ error: 'Database error' });
+    }
+    if (result.length === 0) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+    res.json(result[0]);  // Return the course details
+  });
+});
+
 // Route to create a new course
 router.post('/', (req, res) => {
   const { title, description, price, discount_price } = req.body;
