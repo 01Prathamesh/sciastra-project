@@ -1,4 +1,10 @@
 const mysql = require('mysql2');
+require('dotenv').config();
+
+// In db.js or server.js to check if env variables are loaded correctly
+console.log(process.env.DB_HOST);  // Should log 'localhost'
+console.log(process.env.DB_USER);  // Should log 'sciastra_user'
+
 
 // Create DB connection using environment variables
 const db = mysql.createConnection({

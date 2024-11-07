@@ -6,6 +6,11 @@ const courseRoutes = require('./routes/courseRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 
+// In db.js or server.js to check if env variables are loaded correctly
+console.log(process.env.DB_HOST);  // Should log 'localhost'
+console.log(process.env.DB_USER);  // Should log 'sciastra_user'
+
+
 dotenv.config();
 
 const app = express();
