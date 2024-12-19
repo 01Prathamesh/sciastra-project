@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Page</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -17,21 +18,27 @@
 
             <!-- Course details will be populated here -->
             <div id="course-details">
-                <!-- The course name, description, and price will be inserted here dynamically -->
+                <!-- Dynamic course details will appear here -->
             </div>
 
             <!-- Payment form -->
             <form id="paymentForm">
-                <label for="cardNumber">Card Number:</label>
-                <input type="text" id="cardNumber" required><br><br>
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                </div>
 
-                <label for="expiryDate">Expiration Date:</label>
-                <input type="text" id="expiryDate" required><br><br>
+                <div class="form-group">
+                    <label for="expiryDate">Expiration Date</label>
+                    <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                </div>
 
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" required><br><br>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="123" required>
+                </div>
 
-                <button type="submit">Submit Payment</button>
+                <button type="submit" class="submit-btn">Submit Payment</button>
             </form>
         </section>
     </main>
