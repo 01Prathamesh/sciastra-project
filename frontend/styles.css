@@ -1,50 +1,68 @@
 /* Global Styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f7fb;  /* Light background */
-  color: #333;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;  /* Clean and modern font */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fb;  /* Light background color */
+  color: #333;  /* Dark text for good contrast */
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
 }
 
 /* Header */
 header {
-  background-color: #3e8e41;  /* Dark green background */
+  background-color: #3e8e41;  /* Dark green header */
   color: white;
-  padding: 20px 10%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px 10%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin: 0;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
 
 nav ul {
-  list-style: none;
-  padding: 0;
   display: flex;
-  gap: 20px;
   justify-content: center;
-  margin-top: 10px;
-}
-
-nav ul li {
-  display: inline-block;
+  gap: 30px;
+  margin-top: 15px;
 }
 
 nav ul li a {
   color: white;
-  text-decoration: none;
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 nav ul li a:hover {
   color: #f4f7fb;
+  background-color: #2d7031;  /* Darker green on hover */
 }
 
 nav ul li a.active {
@@ -52,20 +70,45 @@ nav ul li a.active {
   font-weight: bold;
 }
 
-/* Content Sections */
+/* Content Section */
 .content-section {
-  display: none; /* Hide all sections by default */
+  padding: 60px 10%;
+  text-align: center;
 }
 
 #home-content {
-  display: block;  /* Show home section by default */
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#home-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+#home-content p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.intro {
+  background: #f0f0f0;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.intro h2 {
+  color: #3e8e41;
 }
 
 /* Courses Section */
 #courses-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive grid */
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));  /* Responsive grid */
+  gap: 30px;
+  margin-top: 30px;
 }
 
 .course-card {
@@ -73,32 +116,34 @@ nav ul li a.active {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .course-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .course-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #3e8e41;
 }
 
 .course-card p {
   font-size: 1.1rem;
-  margin-bottom: 15px;
   color: #555;
+  margin-bottom: 15px;
 }
 
 .course-card button {
   background-color: #3e8e41;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 12px 25px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: background-color 0.3s ease;
 }
 
@@ -106,29 +151,12 @@ nav ul li a.active {
   background-color: #2d7031;
 }
 
-/* Price Styling: Cross-out Original Price and Highlight Discounted Price */
-#course-details .price {
-  font-size: 1.5rem;
-}
-
-#course-details .original-price {
-  text-decoration: line-through;
-  color: red;  /* Red strikethrough for the original price */
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-#course-details .discount-price {
-  font-size: 1.8rem;
-  color: #ff4d4d;  /* Red color */
-  font-weight: bold;
-}
-
 /* Blog Section */
 #blog-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive grid */
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));  /* Responsive grid */
+  gap: 30px;
+  margin-top: 30px;
 }
 
 .blog-card {
@@ -136,22 +164,93 @@ nav ul li a.active {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .blog-card h3 {
   font-size: 1.5rem;
-  margin-bottom: 15px;
+  color: #3e8e41;
+  margin-bottom: 10px;
 }
 
 .blog-card p {
   font-size: 1.1rem;
-  margin-bottom: 15px;
+  color: #555;
+}
+
+/* Payment Page Specific */
+#payment-details {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+}
+
+#payment-details h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #3e8e41;
+}
+
+#payment-details .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#payment-details label {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+#payment-details input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#payment-details input:focus {
+  border-color: #3e8e41;
+}
+
+#payment-details button.submit-btn {
+  background-color: #3e8e41;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+#payment-details button.submit-btn:hover {
+  background-color: #2d7031;
+}
+
+/* Footer (if you have a footer in all pages) */
+footer {
+  background-color: #3e8e41;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 1rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   header h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   nav ul {
@@ -163,21 +262,83 @@ nav ul li a.active {
     font-size: 1rem;
   }
 
-  #courses-list {
+  #courses-list, #blog-list {
     grid-template-columns: 1fr 1fr;
   }
 
-  #blog-list {
-    grid-template-columns: 1fr 1fr;
+  #payment-details {
+    padding: 30px;
+  }
+
+  #payment-details input {
+    padding: 10px;
+  }
+
+  #payment-details button.submit-btn {
+    padding: 12px 25px;
   }
 }
 
 @media (max-width: 480px) {
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   #courses-list, #blog-list {
     grid-template-columns: 1fr;
   }
+
+  #payment-details {
+    padding: 20px;
+  }
+
+  #payment-details button.submit-btn {
+    padding: 10px 20px;
+  }
+}
+
+/* Style for alert messages */
+.alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f9f9f9;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.alert.success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.alert.error {
+  background-color: #f44336;
+  color: white;
+}
+
+.alert.info {
+  background-color: #2196f3;
+  color: white;
+}
+
+.outdated-price {
+  text-decoration: line-through; 
+  color: red;
+  position: relative;
+}
+
+.outdated-price:after {
+  content: " x";
+  color: red;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
 }
