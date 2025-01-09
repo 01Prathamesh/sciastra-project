@@ -1,66 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SciAstra - Blog and Course Platform</title>
+
+  <!-- Link to Stylesheet and Fonts -->
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Added Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Preload Font -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" as="style">
 </head>
+
 <body>
   <!-- Header and Navigation -->
   <header>
     <nav>
       <h1>SciAstra</h1>
       <ul>
-        <li><a href="#" id="home-btn" class="active">Home</a></li>
-        <li><a href="#" id="courses-btn">Courses</a></li>
-        <li><a href="#" id="blog-btn">Blog</a></li>
+        <li><a href="#" id="home-btn" class="active" aria-label="Home">Home</a></li>
+        <li><a href="#" id="courses-btn" aria-label="Courses">Courses</a></li>
+        <li><a href="#" id="blog-btn" aria-label="Blog">Blog</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main>
+  <!-- Main Content Area -->
+  <main id="main-content">
     <!-- Home Section -->
-    <section id="home-content">
+    <section id="home-content" class="content-section" aria-labelledby="home-section-title">
+      <h2 id="home-section-title" class="visually-hidden">Welcome to SciAstra</h2>
       <div class="intro">
-        <h2>Welcome to SciAstra!</h2>
+        <h3>Welcome to SciAstra!</h3>
         <p>Explore the best courses and latest blogs on the future of science and technology.</p>
-        <button id="explore-btn">Explore Courses</button>
+        <button id="explore-btn" aria-label="Explore Courses">Explore Courses</button>
       </div>
     </section>
 
     <!-- Courses Section -->
-    <section id="courses-content" class="content-section">
-      <h2>Discounted Courses</h2>
-      <input type="text" id="course-search" placeholder="Search Courses..." />
-      <div id="courses-list">
+    <section id="courses-content" class="content-section" aria-labelledby="courses-section-title">
+      <h2 id="courses-section-title">Discounted Courses</h2>
+      <input type="text" id="course-search" placeholder="Search Courses..." aria-label="Search Courses">
+      <div id="courses-list" class="content-list">
         <!-- Dynamic courses will be added here -->
       </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blog-content" class="content-section">
-      <h2>Latest Blogs</h2>
-      <input type="text" id="blog-search" placeholder="Search Blogs..." />
-      <div id="blog-list">
+    <section id="blog-content" class="content-section" aria-labelledby="blog-section-title">
+      <h2 id="blog-section-title">Latest Blogs</h2>
+      <input type="text" id="blog-search" placeholder="Search Blogs..." aria-label="Search Blogs">
+      <div id="blog-list" class="content-list">
         <!-- Dynamic blog posts will be added here -->
       </div>
     </section>
   </main>
 
   <!-- Modal for Course Details -->
-  <div id="course-modal" class="modal">
+  <div id="course-modal" class="modal" role="dialog" aria-labelledby="modal-course-title" aria-hidden="true">
     <div class="modal-content">
-      <span class="close-btn">&times;</span>
-      <h2 id="course-title"></h2>
+      <span class="close-btn" aria-label="Close">&times;</span>
+      <h2 id="modal-course-title">Course Details</h2>
       <p id="course-description"></p>
-      <button id="modal-buy-btn">Buy Course</button>
+      <button id="modal-buy-btn" aria-label="Buy Course">Buy Course</button>
     </div>
   </div>
 
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 SciAstra(Prathamesh Kasar). All rights reserved.</p>
+    <p>Developed by SciAstra Team | <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a></p>
+  </footer>
+
+  <!-- JavaScript -->
   <script src="app.js"></script>
+
 </body>
+
 </html>
