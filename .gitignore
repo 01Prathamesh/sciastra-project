@@ -1,3 +1,4 @@
 # Ignored environment variables
 backend/.env
 .env
+.venv/
